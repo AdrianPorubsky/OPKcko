@@ -1,0 +1,5 @@
+if(EXISTS "/home/adrian/CLionProjects/untitled/OPKcko/cv3/cv3_verzia_cvicenie/tests/testik[1]_tests.cmake")
+  include("/home/adrian/CLionProjects/untitled/OPKcko/cv3/cv3_verzia_cvicenie/tests/testik[1]_tests.cmake")
+else()
+  add_test(testik_NOT_BUILT testik_NOT_BUILT)
+endif()

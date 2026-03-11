@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/testik.dir/tests.cpp.o -o testik  ../lib/libgtest.a ../lib/libgtest_main.a ../src/fifo_lib/libfifo_lib.a ../lib/libgtest.a 

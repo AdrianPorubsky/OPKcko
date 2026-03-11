@@ -1,0 +1,5 @@
+add_test([=[CameraFIFO.NewFrameFIFOIsEmpty]=]  /home/adrian/CLionProjects/untitled/OPKcko/cv3/cv3_verzia_cvicenie/tests/testik [==[--gtest_filter=CameraFIFO.NewFrameFIFOIsEmpty]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[CameraFIFO.NewFrameFIFOIsEmpty]=]  PROPERTIES WORKING_DIRECTORY /home/adrian/CLionProjects/untitled/OPKcko/cv3/cv3_verzia_cvicenie/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[FrameFifoBlackBox.Hypothesis2_PushBackTwice]=]  /home/adrian/CLionProjects/untitled/OPKcko/cv3/cv3_verzia_cvicenie/tests/testik [==[--gtest_filter=FrameFifoBlackBox.Hypothesis2_PushBackTwice]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[FrameFifoBlackBox.Hypothesis2_PushBackTwice]=]  PROPERTIES WORKING_DIRECTORY /home/adrian/CLionProjects/untitled/OPKcko/cv3/cv3_verzia_cvicenie/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  testik_TESTS CameraFIFO.NewFrameFIFOIsEmpty FrameFifoBlackBox.Hypothesis2_PushBackTwice)

@@ -1,0 +1,3 @@
+/home/adrian/CLionProjects/untitled/OPKcko/build/CMakeFiles/untitled.dir
+/home/adrian/CLionProjects/untitled/OPKcko/build/CMakeFiles/edit_cache.dir
+/home/adrian/CLionProjects/untitled/OPKcko/build/CMakeFiles/rebuild_cache.dir
