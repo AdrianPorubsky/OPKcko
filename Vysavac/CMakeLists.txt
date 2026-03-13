@@ -12,6 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_executable(RobotSimulator
         main.cpp
         Environment.cpp
+        Lidar.cpp
 )
 
 # Prepojenie s knižnicou OpenCV [cite: 15]

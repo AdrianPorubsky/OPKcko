@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/RobotSimulator.dir/Environment.cpp.o"
   "CMakeFiles/RobotSimulator.dir/Environment.cpp.o.d"
+  "CMakeFiles/RobotSimulator.dir/Lidar.cpp.o"
+  "CMakeFiles/RobotSimulator.dir/Lidar.cpp.o.d"
   "CMakeFiles/RobotSimulator.dir/main.cpp.o"
   "CMakeFiles/RobotSimulator.dir/main.cpp.o.d"
   "RobotSimulator"

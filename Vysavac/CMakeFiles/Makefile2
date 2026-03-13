@@ -81,12 +81,12 @@ clean: CMakeFiles/RobotSimulator.dir/clean
 CMakeFiles/RobotSimulator.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles --progress-num=1,2,3 "Built target RobotSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles --progress-num=1,2,3,4 "Built target RobotSimulator"
 .PHONY : CMakeFiles/RobotSimulator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/RobotSimulator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RobotSimulator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles 0
 .PHONY : CMakeFiles/RobotSimulator.dir/rule

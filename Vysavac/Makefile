@@ -153,6 +153,30 @@ Environment.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Environment.cpp.s
 .PHONY : Environment.cpp.s
 
+Lidar.o: Lidar.cpp.o
+.PHONY : Lidar.o
+
+# target to build an object file
+Lidar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Lidar.cpp.o
+.PHONY : Lidar.cpp.o
+
+Lidar.i: Lidar.cpp.i
+.PHONY : Lidar.i
+
+# target to preprocess a source file
+Lidar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Lidar.cpp.i
+.PHONY : Lidar.cpp.i
+
+Lidar.s: Lidar.cpp.s
+.PHONY : Lidar.s
+
+# target to generate assembly for a file
+Lidar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Lidar.cpp.s
+.PHONY : Lidar.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -189,6 +213,9 @@ help:
 	@echo "... Environment.o"
 	@echo "... Environment.i"
 	@echo "... Environment.s"
+	@echo "... Lidar.o"
+	@echo "... Lidar.i"
+	@echo "... Lidar.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

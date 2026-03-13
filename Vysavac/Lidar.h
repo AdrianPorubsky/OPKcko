@@ -2,8 +2,8 @@
 
 #include <vector>
 #include <memory>
-#include "types/Geometry.h"
-#include "environment/Environment.h"
+#include "Geometry.h"
+#include "Environment.h"
 
 namespace lidar {
 
@@ -19,6 +19,12 @@ public:
     Lidar(const Config& config, std::shared_ptr<environment::Environment> env);
 
     std::vector<geometry::Point2d> scan(const geometry::RobotState& state) const;
+private:
+    // Tieto dva riadky tam MUSIA byt, aby ich Lidar.cpp poznal
+    Config config_;
+    std::shared_ptr<environment::Environment> env_;
 };
+
+
 
 } // namespace lidar
