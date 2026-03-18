@@ -19,9 +19,7 @@ namespace robot {
         return state_;
     }
 
-    // Implementacia novej metody update
     void Robot::update(double dt) {
-        // Zavola tu chranenu (protected) metodu s ulozenou rychlostou
         update(current_velocity_, dt);
     }
 

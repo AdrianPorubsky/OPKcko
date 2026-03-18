@@ -20,7 +20,7 @@ namespace environment {
     bool Environment::isOccupied(double x, double y) const {
         if (map.empty()) return true;
 
-        // Suradnice na metre
+        // Suradnice na metre a tak
         int px = static_cast<int>(x / resolution);
         int py = static_cast<int>(y / resolution);
 
