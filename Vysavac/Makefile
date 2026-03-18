@@ -129,6 +129,30 @@ RobotSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/build
 .PHONY : RobotSimulator/fast
 
+Canvas.o: Canvas.cpp.o
+.PHONY : Canvas.o
+
+# target to build an object file
+Canvas.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Canvas.cpp.o
+.PHONY : Canvas.cpp.o
+
+Canvas.i: Canvas.cpp.i
+.PHONY : Canvas.i
+
+# target to preprocess a source file
+Canvas.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Canvas.cpp.i
+.PHONY : Canvas.cpp.i
+
+Canvas.s: Canvas.cpp.s
+.PHONY : Canvas.s
+
+# target to generate assembly for a file
+Canvas.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Canvas.cpp.s
+.PHONY : Canvas.cpp.s
+
 Environment.o: Environment.cpp.o
 .PHONY : Environment.o
 
@@ -177,6 +201,30 @@ Lidar.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Lidar.cpp.s
 .PHONY : Lidar.cpp.s
 
+Robot.o: Robot.cpp.o
+.PHONY : Robot.o
+
+# target to build an object file
+Robot.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Robot.cpp.o
+.PHONY : Robot.cpp.o
+
+Robot.i: Robot.cpp.i
+.PHONY : Robot.i
+
+# target to preprocess a source file
+Robot.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Robot.cpp.i
+.PHONY : Robot.cpp.i
+
+Robot.s: Robot.cpp.s
+.PHONY : Robot.s
+
+# target to generate assembly for a file
+Robot.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RobotSimulator.dir/build.make CMakeFiles/RobotSimulator.dir/Robot.cpp.s
+.PHONY : Robot.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -210,12 +258,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RobotSimulator"
+	@echo "... Canvas.o"
+	@echo "... Canvas.i"
+	@echo "... Canvas.s"
 	@echo "... Environment.o"
 	@echo "... Environment.i"
 	@echo "... Environment.s"
 	@echo "... Lidar.o"
 	@echo "... Lidar.i"
 	@echo "... Lidar.s"
+	@echo "... Robot.o"
+	@echo "... Robot.i"
+	@echo "... Robot.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

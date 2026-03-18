@@ -1,7 +1,7 @@
 #pragma once
 
 #include <functional>
-#include "types/Geometry.h"
+#include "Geometry.h"
 
 namespace robot {
 
@@ -21,10 +21,22 @@ public:
     ~Robot();
     void setVelocity(const geometry::Twist& velocity);
     geometry::RobotState getState() const;
+
+    void setState(double x, double y, double theta) {
+        state_.x = x;
+        state_.y = y;
+        state_.theta = theta;
+    }
     bool isInCollision() const;
+    void update(double dt);
 protected:
     void update(const geometry::Twist& velocity, double dt);
 
+private:
+    Config config_;
+    CollisionCb collision_cb_;
+    geometry::RobotState state_;
+    geometry::Twist current_velocity_;
 };
 } // namespace robot
 

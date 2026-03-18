@@ -20,7 +20,6 @@ public:
 
     std::vector<geometry::Point2d> scan(const geometry::RobotState& state) const;
 private:
-    // Tieto dva riadky tam MUSIA byt, aby ich Lidar.cpp poznal
     Config config_;
     std::shared_ptr<environment::Environment> env_;
 };

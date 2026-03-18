@@ -1,103 +1,78 @@
 #include <iostream>
 #include <memory>
-#include <cmath>
-#include <opencv2/opencv.hpp>
+#include <opencv4/opencv2/opencv.hpp>
+
 #include "Environment.h"
 #include "Lidar.h"
+#include "Robot.h"
+#include "Canvas.h"
 #include "Geometry.h"
 
-// Funkcia na kontrolu kolízie celého obvodu robota
-bool isCollisionFree(double x, double y, double radius, std::shared_ptr<environment::Environment> env) {
-    // Skontrolujeme stred a 8 bodov po obvode (každých 45 stupňov)
-    if (env->isOccupied(x, y)) return false;
-
-    for (int i = 0; i < 8; ++i) {
-        double angle = i * (M_PI / 4.0);
-        double check_x = x + radius * std::cos(angle);
-        double check_y = y + radius * std::sin(angle);
-        if (env->isOccupied(check_x, check_y)) return false;
-    }
-    return true;
-}
-
 int main() {
+    // Nastavenie mapky
     environment::Config env_cfg;
     env_cfg.map_filename = "opk-map.png";
-    env_cfg.resolution = 0.04;
+    env_cfg.resolution = 0.04; // Metre na pixle
     auto env = std::make_shared<environment::Environment>(env_cfg);
 
+    // Canvas
+    Canvas canvas("Vysavac", env_cfg.map_filename, env_cfg.resolution);
+
+    // Lidar
     lidar::Config lidar_cfg;
-    lidar_cfg.max_range = 5.0;
-    lidar_cfg.beam_count = 120;
+    lidar_cfg.max_range = 4.0;
+    lidar_cfg.beam_count = 100;
     lidar_cfg.first_ray_angle = -M_PI;
     lidar_cfg.last_ray_angle = M_PI;
-    lidar::Lidar my_lidar(lidar_cfg, env);
+    auto my_lidar = std::make_shared<lidar::Lidar>(lidar_cfg, env);
 
-    geometry::RobotState state;
-    // Dynamický spawn v strede mapy
-    state.x = env->getWidth() / 2.0;
-    state.y = env->getHeight() / 2.0;
-    state.theta = 0.0;
+    // Kolizia
+    robot::Robot::CollisionCb col_func = [&](geometry::RobotState s) {
+        double radius = 0.4;
+        if (env->isOccupied(s.x, s.y)) return true;
+        for (int i = 0; i < 8; ++i) {
+            double angle = i * (M_PI / 4.0);
+            if (env->isOccupied(s.x + radius * cos(angle), s.y + radius * sin(angle))) return true;
+        }
+        return false;
+    };
 
-    // VYŠŠIE RÝCHLOSTI pre seamless pocit
-    double linear_speed = 0.15;  // 15cm na krok
-    double angular_speed = 0.12; // rýchlejšia rotácia
-    double robot_radius = 0.4;   // Polomer robota v metroch (cca 8 pixelov pri 0.05 res)
+    // Inicializacia vysavacu
+    robot::Config rob_cfg;
+    rob_cfg.simulation_period_ms = 20; // 20ms cyklus
+    robot::Robot adrian_bot(rob_cfg, col_func);
 
-    std::cout << "Turbo Smooth ovládanie zapnuté. WASD pre pohyb." << std::endl;
+    // Nastavíme počiatočnú polohu (napr. stred mapy)
+    adrian_bot.setState(env->getWidth() / 2.0, env->getHeight() / 2.0, 0.0);
+
+    std::cout << "Simulacia bezi. Ovladaj WASD, ukonci ESC." << std::endl;
 
     while (true) {
-        // Načítanie mapy (na tvojom CPU to pôjde bleskovo)
-        cv::Mat canvas = cv::imread(env_cfg.map_filename, cv::IMREAD_COLOR);
-        if (canvas.empty()) break;
+        canvas.clear();
+        geometry::RobotState current_state = adrian_bot.getState();
 
-        auto to_px = [&](double m) { return static_cast<int>(m / env_cfg.resolution); };
+        // Lidarovy sken
+        auto scan = my_lidar->scan(current_state);
+        canvas.drawLidarScan(scan, cv::Scalar(0, 0, 255)); // Cervene bodky
 
-        // 1. LIDAR body
-        auto scan_points = my_lidar.scan(state);
-        for (const auto& pt : scan_points)
-            cv::circle(canvas, cv::Point(to_px(pt.x), to_px(pt.y)), 1, cv::Scalar(0, 0, 255), -1);
+        // Vykreslime robota
+        canvas.drawRobot(current_state, 0.4, cv::Scalar(0, 255, 0)); // Zelený kruh
 
-        // 2. Vykreslenie robota
-        int rx = to_px(state.x);
-        int ry = to_px(state.y);
-        int r_px = static_cast<int>(robot_radius / env_cfg.resolution);
+        canvas.show(); // cv::imshow
 
-        cv::circle(canvas, cv::Point(rx, ry), r_px, cv::Scalar(0, 200, 0), 2); // Telo
+        int key = cv::waitKey(rob_cfg.simulation_period_ms);
+        if (key == 27) break; // ESC
 
-        // Smerovka (predok)
-        cv::line(canvas, cv::Point(rx, ry),
-                 cv::Point(rx + (r_px+5) * std::cos(state.theta), ry + (r_px+5) * std::sin(state.theta)),
-                 cv::Scalar(255, 0, 0), 2);
+        geometry::Twist cmd = {0.0, 0.0}; // {linear, angular}
 
-        cv::imshow("Turbo Vysavac", canvas);
+        // Brm brm logika
+        if (key == 'w' || key == 'W') cmd.linear = 8;
+        if (key == 's' || key == 'S') cmd.linear = -8;
+        if (key == 'a' || key == 'A') cmd.angular = -5;
+        if (key == 'd' || key == 'D') cmd.angular = 5;
 
-        // 3. SEAMLESS INPUT
-        int key = cv::waitKey(1); // Iba 1ms čakanie
-        if (key == 27) break;
-
-        double next_x = state.x;
-        double next_y = state.y;
-
-        if (key == 'w' || key == 'W') {
-            next_x += linear_speed * std::cos(state.theta);
-            next_y += linear_speed * std::sin(state.theta);
-        }
-        if (key == 's' || key == 'S') {
-            next_x -= linear_speed * std::cos(state.theta);
-            next_y -= linear_speed * std::sin(state.theta);
-        }
-        if (key == 'a' || key == 'A') state.theta -= angular_speed;
-        if (key == 'd' || key == 'D') state.theta += angular_speed;
-
-        // 4. KONTROLA KOLÍZIE OBVODU
-        if (isCollisionFree(next_x, next_y, robot_radius, env)) {
-            state.x = next_x;
-            state.y = next_y;
-        } else {
-            // Malý vizuálny feedback v konzole (nepovinné)
-            // std::cout << "Kontakt!" << std::endl;
-        }
+        adrian_bot.setVelocity(cmd);
+        adrian_bot.update(rob_cfg.simulation_period_ms / 1000.0); // Prevod ms na sekundy
     }
 
     return 0;

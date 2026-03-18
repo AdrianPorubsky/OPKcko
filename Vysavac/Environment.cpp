@@ -9,10 +9,9 @@
 namespace environment {
 
     Environment::Environment(const Config& config) : resolution(config.resolution) {
-        // Načítanie obrázka v odtieňoch sivej (CV_8UC1) [cite: 16, 17]
         map = cv::imread(config.map_filename, cv::IMREAD_GRAYSCALE);
 
-        // Ošetrenie chýb (napr. neexistujúci súbor) [cite: 15, 84]
+        // subor neni
         if (map.empty()) {
             std::cerr << "Chyba: Mapa " << config.map_filename << " sa nenasla!" << std::endl;
         }
@@ -21,18 +20,16 @@ namespace environment {
     bool Environment::isOccupied(double x, double y) const {
         if (map.empty()) return true;
 
-        // Prepočet reálnych súradníc (metre) na pixely [cite: 28, 35]
+        // Suradnice na metre
         int px = static_cast<int>(x / resolution);
         int py = static_cast<int>(y / resolution);
 
-        // Kontrola hraníc mapy [cite: 84]
+        // Hranice mapy
         if (px < 0 || px >= map.cols || py < 0 || py >= map.rows) {
             return true;
         }
 
-        // Biely pixel (255) je voľno, čierny (0) je prekážka [cite: 18]
-        // Na obrázku vidíme, že steny sú čierne
-        return map.at<uchar>(py, px) < 128; // < 128 berieme ako čiernu (prekážku)
+        return map.at<uchar>(py, px) < 128; // cierna = prekazka
     }
 
     double Environment::getWidth() const { return map.cols * resolution; }

@@ -111,11 +111,41 @@ CMakeFiles/RobotSimulator.dir/Lidar.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RobotSimulator.dir/Lidar.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Lidar.cpp -o CMakeFiles/RobotSimulator.dir/Lidar.cpp.s
 
+CMakeFiles/RobotSimulator.dir/Robot.cpp.o: CMakeFiles/RobotSimulator.dir/flags.make
+CMakeFiles/RobotSimulator.dir/Robot.cpp.o: Robot.cpp
+CMakeFiles/RobotSimulator.dir/Robot.cpp.o: CMakeFiles/RobotSimulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RobotSimulator.dir/Robot.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RobotSimulator.dir/Robot.cpp.o -MF CMakeFiles/RobotSimulator.dir/Robot.cpp.o.d -o CMakeFiles/RobotSimulator.dir/Robot.cpp.o -c /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Robot.cpp
+
+CMakeFiles/RobotSimulator.dir/Robot.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RobotSimulator.dir/Robot.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Robot.cpp > CMakeFiles/RobotSimulator.dir/Robot.cpp.i
+
+CMakeFiles/RobotSimulator.dir/Robot.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RobotSimulator.dir/Robot.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Robot.cpp -o CMakeFiles/RobotSimulator.dir/Robot.cpp.s
+
+CMakeFiles/RobotSimulator.dir/Canvas.cpp.o: CMakeFiles/RobotSimulator.dir/flags.make
+CMakeFiles/RobotSimulator.dir/Canvas.cpp.o: Canvas.cpp
+CMakeFiles/RobotSimulator.dir/Canvas.cpp.o: CMakeFiles/RobotSimulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RobotSimulator.dir/Canvas.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RobotSimulator.dir/Canvas.cpp.o -MF CMakeFiles/RobotSimulator.dir/Canvas.cpp.o.d -o CMakeFiles/RobotSimulator.dir/Canvas.cpp.o -c /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Canvas.cpp
+
+CMakeFiles/RobotSimulator.dir/Canvas.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RobotSimulator.dir/Canvas.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Canvas.cpp > CMakeFiles/RobotSimulator.dir/Canvas.cpp.i
+
+CMakeFiles/RobotSimulator.dir/Canvas.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RobotSimulator.dir/Canvas.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/CLionProjects/untitled/OPKcko/Vysavac/Canvas.cpp -o CMakeFiles/RobotSimulator.dir/Canvas.cpp.s
+
 # Object files for target RobotSimulator
 RobotSimulator_OBJECTS = \
 "CMakeFiles/RobotSimulator.dir/main.cpp.o" \
 "CMakeFiles/RobotSimulator.dir/Environment.cpp.o" \
-"CMakeFiles/RobotSimulator.dir/Lidar.cpp.o"
+"CMakeFiles/RobotSimulator.dir/Lidar.cpp.o" \
+"CMakeFiles/RobotSimulator.dir/Robot.cpp.o" \
+"CMakeFiles/RobotSimulator.dir/Canvas.cpp.o"
 
 # External object files for target RobotSimulator
 RobotSimulator_EXTERNAL_OBJECTS =
@@ -123,6 +153,8 @@ RobotSimulator_EXTERNAL_OBJECTS =
 RobotSimulator: CMakeFiles/RobotSimulator.dir/main.cpp.o
 RobotSimulator: CMakeFiles/RobotSimulator.dir/Environment.cpp.o
 RobotSimulator: CMakeFiles/RobotSimulator.dir/Lidar.cpp.o
+RobotSimulator: CMakeFiles/RobotSimulator.dir/Robot.cpp.o
+RobotSimulator: CMakeFiles/RobotSimulator.dir/Canvas.cpp.o
 RobotSimulator: CMakeFiles/RobotSimulator.dir/build.make
 RobotSimulator: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.6.0
 RobotSimulator: /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.6.0
@@ -180,7 +212,7 @@ RobotSimulator: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.6.0
 RobotSimulator: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.6.0
 RobotSimulator: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.6.0
 RobotSimulator: CMakeFiles/RobotSimulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable RobotSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adrian/CLionProjects/untitled/OPKcko/Vysavac/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable RobotSimulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RobotSimulator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
